@@ -21,19 +21,26 @@ def get_book(book_id: int, db: Session = Depends(get_db)):
     try:
         return get_book_by_id(db, book_id)
     except ValueError as e:
-        raise HTTPException(status_code=404, detail=str(e))
+        raise HTTPException(status_code=500, detail=str(e))
 
 
-@router.post("/", response_model=Book)
+@router.post("/create", response_model=Book)
 def create_new_book(book: Book, db: Session = Depends(get_db)):
-    return create_book(db, book)
+    try:
+        return create_book(db, book)
+    except ValueError as e:
+        raise HTTPException(status_code=500, detail=str(e))
 
-
-@router.put("/{book_id}", response_model=Book)
+@router.put("/update/{book_id}", response_model=Book)
 def update_existing_book(book_id: int, book: Book, db: Session = Depends(get_db)):
-    return update_book(db, book_id, book)
+    try:
+        return update_book(db, book_id, book)
+    except ValueError as e:
+        raise HTTPException(status_code=500, detail=str(e))
 
-
-@router.delete("/{book_id}", response_model=Book)
+@router.delete("/remove/{book_id}", response_model=Book)
 def delete_existing_book(book_id: int, db: Session = Depends(get_db)):
-    return delete_book(db, book_id)
+    try:
+        return delete_book(db, book_id)
+    except ValueError as e:
+        raise HTTPException(status_code=500, detail=str(e))

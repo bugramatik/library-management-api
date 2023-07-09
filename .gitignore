@@ -1,0 +1,31 @@
+# Python artifacts
+*.pyc
+*.pyo
+*.pyd
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Directories to ignore
+venv/
+dist/
+build/
+htmlcov/
+
+# Reports
+*.coverage
+.coverage.*
+.mypy_cache/
+.coverage
+.coverage.*
+.htmlcov/
+.tox/
+.nox/
+.pytest_cache/
+
+# IDE - PyCharm
+.idea/
+
+# Database
+*.db
+*.sqlite3

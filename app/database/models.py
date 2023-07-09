@@ -27,7 +27,7 @@ class Book(Base):
     name = Column(String)
     author = Column(String)
     copy_number = Column(Integer)
-    book_type_id = Column(Integer, ForeignKey("book_types.id"))
+    book_type_id = Column(Integer, ForeignKey("book_types.id", ondelete="SET NULL", onupdate="CASCADE"))
     book_type = relationship("BookType", back_populates="books")
     borrows = relationship("Borrow", back_populates="book")
 
@@ -36,8 +36,8 @@ class Borrow(Base):
     __tablename__ = "borrows"
 
     id = Column(Integer, primary_key=True, index=True)
-    student_id = Column(Integer, ForeignKey("students.id"))
-    book_id = Column(Integer, ForeignKey("books.id"))
+    student_id = Column(Integer, ForeignKey("students.id", ondelete="CASCADE", onupdate="CASCADE"))
+    book_id = Column(Integer, ForeignKey("books.id", ondelete="CASCADE", onupdate="CASCADE"))
     student = relationship("Student", back_populates="borrowed_books")
     book = relationship("Book", back_populates="borrows")
 

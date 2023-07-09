@@ -22,7 +22,11 @@ session = Session()
 
 
 def setup_database():
-    Base.metadata.create_all(bind=engine)
+    try:
+        Base.metadata.create_all(bind=engine)
+        print("Tables created successfully!")
+    except Exception as e:
+        print("An error occurred during table creation:", str(e))
 
 
 # Dependency
