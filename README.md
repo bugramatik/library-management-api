@@ -53,10 +53,13 @@ This is a simple API for a library management system built using FastAPI and SQL
     ```sql
     CREATE DATABASE lmsdb;
     ```
+6. Restore the database from dumpfile
+   ```bash
+   psql -U postgres -d lmsdb < dumpfile.sql
+   ```
+7. Update the database connection settings in `database/__init__.py` according to your PostgreSQL setup.
 
-6. Update the database connection settings in `database/__init__.py` according to your PostgreSQL setup.
-
-7. Run the `database_setup.py` script to create the tables in the database:
+8. Run the `database_setup.py` script to create the tables in the database:
 
     ```bash
     python database_setup.py
