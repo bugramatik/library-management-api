@@ -59,11 +59,6 @@ This is a simple API for a library management system built using FastAPI and SQL
    ```
 7. Update the database connection settings in `database/__init__.py` according to your PostgreSQL setup.
 
-8. Run the `database_setup.py` script to create the tables in the database:
-
-    ```bash
-    python database_setup.py
-    ```
 
 ## Usage
 
